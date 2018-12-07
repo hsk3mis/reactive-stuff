@@ -1,0 +1,4 @@
+List open ports with processes:
+    lsof -nP -i4TCP | grep "8080\|8081\|7000"
+
+TCP + SSL without http ???
