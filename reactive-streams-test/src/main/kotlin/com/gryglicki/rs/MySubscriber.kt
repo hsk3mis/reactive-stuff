@@ -34,8 +34,12 @@ class MySubscriber(private val configuredRequestCounter: Long, configuredCancell
 
     override fun onSubscribe(s: Subscription) {
         subscription = s
-        logger.info { "onSubscribe(): request initial ($requestedCounter) data via Subscription" }
-        subscription?.request(requestedCounter)
+        if (requestedCounter <= 0) {
+            logger.info { "onSubscribe(): don't request data" }
+        } else {
+            logger.info { "onSubscribe(): request initial ($requestedCounter) data via Subscription" }
+            subscription?.request(requestedCounter)
+        }
     }
 
     override fun onNext(s: String) {

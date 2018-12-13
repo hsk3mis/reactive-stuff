@@ -6,6 +6,15 @@ import reactor.core.publisher.Flux
 class ReactiveStreamsTest {
 
     @Test
+    fun publisherShouldNotPublishIfNotRequested() {
+        //Given
+        val flux = Flux.fromIterable(1..10).map(Int::toString)
+
+        //When
+        flux.subscribe(MySubscriber(0))
+    }
+
+    @Test
     fun subscriberShouldOnlyRequestDataIfNeeded() {
         //Given
         val flux = Flux.fromIterable(1..10).map(Int::toString)
