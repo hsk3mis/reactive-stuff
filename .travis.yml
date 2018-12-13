@@ -3,6 +3,9 @@ language: java
 jdk:
   - openjdk8
 
+before_install:
+  - cd reactive-streams-test
+
 # Caching of gradle artifacts for successive invocations of the build.
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
