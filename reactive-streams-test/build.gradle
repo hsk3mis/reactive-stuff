@@ -24,6 +24,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.gryglicki'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
 compileKotlin {
 	kotlinOptions {
 		freeCompilerArgs = ["-Xjsr305=strict"]
@@ -56,4 +57,10 @@ dependencies {
     implementation("org.projectlombok:lombok:1.16.16")
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('io.projectreactor:reactor-test')
+}
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.gryglicki.Main'
+    }
 }
